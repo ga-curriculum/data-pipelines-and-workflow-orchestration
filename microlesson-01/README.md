@@ -95,11 +95,11 @@ A **data pipeline** is a sequence of interconnected processing steps that transf
 
 | **🔧 Component**               | **📖 Description**                                                                                         | **📊 Examples**                                                                                       |
 |--------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| ** Data Sources**            | The origin of raw data.                                                                                   | Databases (relational, NoSQL), APIs, streaming platforms (Kafka, Kinesis), files (CSV, JSON), IoT devices. |
-| ** Ingestion Layer**         | Extracts data from sources and brings it into the pipeline.                                               | Batch ingestion (scheduled intervals), streaming ingestion (real-time data).                         |
-| ** Processing/Transformation Layer** | Where data is cleaned, validated, transformed, and enriched.                                                  | Data cleaning, validation, transformation, feature engineering.                                      |
-| ** Storage Layer**           | Stores data at various pipeline stages.                                                                   | Data lakes, data warehouses, databases, caches.                                                      |
-| ** Serving Layer**           | Makes processed data available to downstream users and systems.                                           | APIs, dashboards, machine learning models.                                                           |
+| **Data Sources**            | The origin of raw data.                                                                                   | Databases (relational, NoSQL), APIs, streaming platforms (Kafka, Kinesis), files (CSV, JSON), IoT devices. |
+| **Ingestion Layer**         | Extracts data from sources and brings it into the pipeline.                                               | Batch ingestion (scheduled intervals), streaming ingestion (real-time data).                         |
+| **Processing/Transformation Layer** | Where data is cleaned, validated, transformed, and enriched.                                                  | Data cleaning, validation, transformation, feature engineering.                                      |
+| **Storage Layer**           | Stores data at various pipeline stages.                                                                   | Data lakes, data warehouses, databases, caches.                                                      |
+| **Serving Layer**           | Makes processed data available to downstream users and systems.                                           | APIs, dashboards, machine learning models.                                                           |
 
 ---
 
