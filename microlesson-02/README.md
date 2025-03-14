@@ -62,6 +62,7 @@ df.to_csv("nyc_taxi_cleaned.csv", index=False)
 
 ## **Step 4: Pipeline Debugging & Troubleshooting**
 ### **Common Issues & Fixes**
+
 | Issue | Cause | Solution |
 |---|---|---|
 | `ParserError` when loading CSV | Incorrect file path or format | Verify file name & use `pd.read_csv('file.csv', error_bad_lines=False)` |
