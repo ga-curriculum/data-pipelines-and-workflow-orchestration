@@ -9,19 +9,19 @@ By the end of this lesson, you will:
 - Learn techniques to optimize pipeline efficiency.
 - Identify common errors and debug pipeline failures.
 
-## **Section 1: Identifying Performance Bottlenecks**
+## **Identifying Performance Bottlenecks**
 Data pipelines often slow down due to inefficient processing, poor memory management, or unoptimized I/O operations.
 
 ### **Example 1: Inefficient Data Loading**
-❌ **Problem: Loading large CSV files inefficiently**
+**Problem: Loading large CSV files inefficiently**
 ```python
 import pandas as pd
 
 df = pd.read_csv("large_dataset.csv")
 ```
-🔍 **Issue:** Pandas loads the entire dataset into memory, which can cause crashes on large files.
+**Issue:** Pandas loads the entire dataset into memory, which can cause crashes on large files.
 
-✅ **Optimization: Load data in chunks**
+**Optimization: Load data in chunks**
 ```python
 chunk_size = 100000  # Process 100k rows at a time
 chunks = []
@@ -29,44 +29,44 @@ for chunk in pd.read_csv("large_dataset.csv", chunksize=chunk_size):
     chunks.append(chunk)
 df = pd.concat(chunks, ignore_index=True)
 ```
-✅ **Outcome:** Reduces memory usage and prevents crashes.
+**Outcome:** Reduces memory usage and prevents crashes.
 
-## **Section 2: Parallel Processing for Speed**
+## **Parallel Processing for Speed**
 ### **Example 2: Slow Data Transformations**
-❌ **Problem: Processing rows one-by-one**
+**Problem: Processing rows one-by-one**
 ```python
 df['fare_with_tax'] = df['fare_amount'].apply(lambda x: x * 1.08)
 ```
-🔍 **Issue:** `apply()` is slow for large datasets.
+**Issue:** `apply()` is slow for large datasets.
 
-✅ **Optimization: Vectorized Operations**
+**Optimization: Vectorized Operations**
 ```python
 df['fare_with_tax'] = df['fare_amount'] * 1.08
 ```
-✅ **Outcome:** **10-100x faster** by leveraging Pandas’ internal optimizations.
+**Outcome:** **10-100x faster** by leveraging Pandas’ internal optimizations.
 
-## **Section 3: Troubleshooting Common Pipeline Failures**
+## **Troubleshooting Common Pipeline Failures**
 ### **Example 3: Handling Missing Data**
-❌ **Problem: Pipeline crashes due to missing values**
+**Problem: Pipeline crashes due to missing values**
 ```python
 df['passenger_count'] = df['passenger_count'].astype(int)  # Causes error if NaNs exist
 ```
-✅ **Fix: Handle missing values before conversion**
+**Fix: Handle missing values before conversion**
 ```python
 df['passenger_count'] = df['passenger_count'].fillna(1).astype(int)
 ```
-✅ **Outcome:** Prevents runtime errors by setting a default value.
+**Outcome:** Prevents runtime errors by setting a default value.
 
-### **Example 4: Debugging Pipeline Failures with Logging**
-❌ **Problem: Silent failures when processing data**
+### **Debugging Pipeline Failures with Logging**
+**Problem: Silent failures when processing data**
 ```python
 def transform(df):
     df['total_fare'] = df['fare_amount'] + df['extra'] + df['mta_tax'] + df['tip_amount']
     return df
 ```
-🔍 **Issue:** If a column is missing, the function fails but provides no feedback.
+**Issue:** If a column is missing, the function fails but provides no feedback.
 
-✅ **Solution: Add Logging and Error Handling**
+**Solution: Add Logging and Error Handling**
 ```python
 import logging
 
@@ -78,7 +78,7 @@ def transform(df):
         raise
     return df
 ```
-✅ **Outcome:** Captures missing column errors and logs details for debugging.
+**Outcome:** Captures missing column errors and logs details for debugging.
 
 
 ## **Wrap-Up & Next Steps**
@@ -86,6 +86,4 @@ def transform(df):
 - How to optimize data loading, transformation, and processing.
 - Common debugging techniques for troubleshooting pipelines.
 - Logging and error handling best practices.
-
-**Next Up:** Prepare to build and optimize your own Apache Airflow pipeline!
  
