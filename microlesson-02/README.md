@@ -70,7 +70,25 @@ df.to_csv("nyc_taxi_cleaned.csv", index=False)
 | Negative trip durations | Incorrect data entries | Filter out invalid durations with `df[df['trip_duration'] > 0]` |
 
 ## **Step 5: Automate with Apache Airflow**
-Apache Airflow helps automate ETL workflows. Here’s a basic DAG (Directed Acyclic Graph) for orchestrating this pipeline:
+Apache Airflow helps automate ETL workflows. It's a platform that programmatically authors, schedules, and monitors data pipelines, making them more maintainable, reliable, and scalable.
+
+We are representing the workflows with DAG (Directed Acyclic Graph):
+
+- Directed: Tasks flow in one direction from upstream to downstream
+- Acyclic: No cycles allowed - tasks cannot create circular dependencies
+- Graph: A collection of nodes (tasks) connected by edges (dependencies)
+
+Instead of running Python scripts manually or using basic schedulers like cron jobs, Airflow provides:
+
+- Dependency Management
+- Robust Scheduling
+- Error Handling
+- Monitoring
+- Scalability
+- History Tracking
+
+Here's a basic DAG for orchestrating the NYC Taxi data pipeline:
+
 ```python
 from airflow import DAG
 from airflow.operators.python import PythonOperator
